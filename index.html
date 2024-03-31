@@ -10,11 +10,28 @@
   </style>
 </head>
 <body>
-	<h1>You just visited this website!</h1>
-        <script>
-	  var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
-	  /*Usage example*/
-	  findIP.then(ip => document.write('<p>Here is your IP: </p>', ip)).catch(e => console.error(e))
-        </script>
+  <h1>You just visited this website!</h1>
+  <script>
+    var findIP = new Promise(r => {
+      var w = window,
+          a = new (w.RTCPeerConnection || w.mozRTCPeerConnection || w.webkitRTCPeerConnection)({ iceServers: [] }),
+          b = () => {};
+      a.createDataChannel("");
+      a.createOffer(c => a.setLocalDescription(c, b, b), b);
+      a.onicecandidate = c => {
+        try {
+          c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r);
+        } catch (e) {}
+      }
+    });
+
+    /*Usage example*/
+    findIP.then(ip => {
+      var p = document.createElement('p');
+      var text = document.createTextNode('Here is your IP: ' + ip);
+      p.appendChild(text);
+      document.body.appendChild(p);
+    }).catch(e => console.error(e));
+  </script>
 </body>
 </html>
