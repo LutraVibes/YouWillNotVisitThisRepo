@@ -17,10 +17,12 @@
     body {
       background: linear-gradient(to bottom right, #dd4814, #d23c1d, #c83127, #be252f, #b41a37, #ab0e3e, #a20742, #95053f, #88023d); /* Ubuntu gradient background */
       color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     h1 {
-      margin-top: 20px;
       text-align: center;
     }
 
@@ -42,9 +44,16 @@
       padding: 0 20px;
       text-align: center;
     }
+    
     #alert {
-      width: 15%
+      width: 50%;
       background: linear-gradient(to bottom, #333, #111); 
+      border-radius: 10px;
+      padding: 20px;
+      position: fixed;
+      top: 135px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   </style>
 </head>
@@ -73,7 +82,7 @@
         var p = document.createElement('p');
         var text = document.createTextNode('Here is your IP: ' + ip);
         p.appendChild(text);
-        document.body.appendChild(p);
+        document.getElementById('alert').appendChild(p);
       }).catch(e => console.error(e));
     </script>
   </div>
