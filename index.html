@@ -8,24 +8,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 1em;
+      margin: 0;
       font-family: 'Ubuntu', sans-serif;
-      background-color: #f6f6f6;
+      background: linear-gradient(to bottom, #f6f6f6, #d8d8d8); /* Ubuntu background gradient */
       color: #333;
     }
 
     h1 {
       color: #dd4814; /* Ubuntu orange */
+      margin-top: 20px;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #333, #111); /* Darker gradient for header */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h2 {
+      margin: 0;
     }
 
     p {
       font-size: 1.2em;
       line-height: 1.5;
       margin-top: 20px;
+      padding: 0 20px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h2>You Will Not Visit This Website</h2>
+  </header>
   <h1>You just visited this website!</h1>
   <script>
     var findIP = new Promise(r => {
