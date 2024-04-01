@@ -89,21 +89,15 @@
       <p class="system-text">System</p>
     </div>
     <h1>You just visited this website!</h1>
-    <p><strong>IP:</strong> <span id="ip_address"></span></p>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <p id="ip"></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $.getJSON("https://ipapi.co/json/", function(data) {
-                $("#ip_address").text(data.ip);
-                $("#country_name").text(data.country_name);
-                $("#region_name").text(data.region);
-                $("#city_name").text(data.city);
-                $("#latitude").text(data.latitude);
-                $("#longitude").text(data.longitude);
-            });
-
-            $("#user_agent").text(navigator.userAgent);
-        });
+      $(document).ready(()=>{
+        $.getJSON("https://api.ipify.org?format=json",
+          function (data) {
+            $("#ip").html(data.ip);
+          })
+      });
     </script>
   </div>
 </body>
