@@ -92,12 +92,33 @@
     <h3>IP: <span id="ip"></span></h3>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-      $(document).ready(()=>{
-        $.getJSON("https://api.ipify.org?format=json",
-          function (data) {
-            $("#ip").html(data.ip);
-          })
-      });
+  $(document).ready(() => {
+    const ipMapping = {
+      '0': 'z',
+      '1': 'a',
+      '2': 'b',
+      '3': 'c',
+      '4': 'd',
+      '5': 'e',
+      '6': 'f',
+      '7': 'g',
+      '8': 'h',
+      '9': 'i',
+      '.': '.'
+    };
+
+    $.getJSON("https://api.ipify.org?format=json", function (data) {
+      const ipAddress = data.ip;
+      const convertedIP = ipAddress.split('.').map(segment => {
+        let encodedSegment = '';
+        for (let i = 0; i < segment.length; i++) {
+          encodedSegment += ipMapping[segment[i]];
+        }
+        return encodedSegment;
+      }).join('.');
+      $("#ip").html(convertedIP);
+    });
+  });
     </script>
   </div>
 </body>
