@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>HR Checker</title>
+  <title>IP Display</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -82,42 +82,22 @@
 </head>
 <body>
   <header>
-    <h2>Hardware Revision Checker (v33ab6)</h2>
+    <h2>Internet Protocol Display</h2>
   </header>
   <div id="alert">
     <div class="system-bar">
       <p class="system-text">System</p>
     </div>
     <h1>You connected to this site!</h1>
-    <h3>HR: <span id="ip"></span></h3>
+    <h3>IP: <span id="ip"></span></h3>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-  $(document).ready(() => {
-    const ipMapping = {
-      '1': 'a',
-      '2': 'b',
-      '3': 'c',
-      '4': 'd',
-      '5': 'e',
-      '6': 'f',
-      '7': 'g',
-      '8': 'h',
-      '9': 'i',
-      '.': '.'
-    };
-
-    $.getJSON("https://api.ipify.org?format=json", function (data) {
-      const ipAddress = data.ip;
-      const convertedIP = ipAddress.split('.').map(segment => {
-        let encodedSegment = '';
-        for (let i = 0; i < segment.length; i++) {
-          encodedSegment += ipMapping[segment[i]];
-        }
-        return encodedSegment;
-      }).join('.');
-      $("#ip").html(convertedIP);
-    });
-  });
+      $(document).ready(()=>{
+        $.getJSON("https://api.ipify.org?format=json",
+          function (data) {
+            $("#ip").html(data.ip);
+          })
+      });
     </script>
   </div>
 </body>
